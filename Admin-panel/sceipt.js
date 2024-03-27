@@ -1,16 +1,20 @@
 let items = [];
 
 let addCat = () => {
-  let val = document.getElementById("name").value;
+  let val = document.getElementById("name").value.trim();
   let alldata = JSON.parse(localStorage.getItem("catName")) || [];
   let existingCat = alldata.find((i) => {
     return i.name.toLowerCase() === val.toLowerCase();
   });
   let len;
+  document.getElementById("alert").innerHTML = " ";
   if (val == "") {
-    alert("Please enter Category name");
+    document.getElementById("alert").innerHTML = "*Please enter Category name.";
   } else if (existingCat) {
-    alert("This Category already taken");
+    document.getElementById("alert").innerHTML =
+      "*This Category already taken.";
+
+    document.getElementById("name").value = "";
   } else {
     if (alldata != null) {
       len = alldata.length;
