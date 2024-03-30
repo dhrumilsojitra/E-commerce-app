@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/index.css" />
     <!-- font awsome cdn  -->
     <link
       rel="stylesheet"
@@ -24,6 +23,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
       rel="stylesheet"
     />
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="./src/index.css" />
 
     <title>E-commerce app</title>
   </head>
@@ -53,9 +54,9 @@
       <!-- nav-menu -->
       <nav class="sm:block hidden">
         <ul class="sm:flex gap-8 text-base font-medium items-center">
-          <li class="hover:text-blue-600">Home</li>
+          <li class="hover:text-blue-600"><a href="#">Home</a></li>
+          <li class="hover:text-blue-600"><a href="#products">Products</a></li>
           <li class="hover:text-blue-600">About</li>
-          <li class="hover:text-blue-600">Products</li>
           <li class="hover:text-blue-600">Login</li>
           <li>
             <a
@@ -246,15 +247,30 @@
     </div>
 
     <!-- all products section -->
-    <div class="container mx-auto my-8">
+    <div class="container mx-auto my-8" id="products">
+      <!-- title -->
       <div class="my-4">
         <p class="font-semibold text-2xl text-center">Best Selling Products</p>
       </div>
-      <!-- category section -->
+      <!-- category menu section -->
       <div
         class="flex border-t-2 border-b-2 py-6 border-gray-300 justify-center"
       >
-        <ul class="flex gap-7 font-semibold">
+        <!-- mobile screen -->
+        <select name="Category" id="" class="px-3 rounded-md block sm:hidden">
+          <option value="" class="hover:text-blue-700">
+            <a href="#">All</a>
+          </option>
+          <option value=""><a href="#">Electronics</a></option>
+          <option value=""><a href="#">Furniture & Decors</a></option>
+          <option value=""><a href="">Jewellry & Accessories</a></option>
+          <option value=""><a href="#">Men & Women</a></option>
+          <option value="" class="hover:text-blue-700">
+            <a href="#">Watches</a>
+          </option>
+        </select>
+        <!-- large scrren  -->
+        <ul class="hidden gap-7 font-semibold sm:flex">
           <li class="hover:text-blue-700"><a href="#">All</a></li>
           <li class="hover:text-blue-700"><a href="#">Electronics</a></li>
           <li class="hover:text-blue-700">
@@ -267,7 +283,8 @@
           <li class="hover:text-blue-700"><a href="#">Watches</a></li>
         </ul>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 my-2">
+      <!-- products -->
+      <div class="grid md:grid-cols-3 lg:grid-cols-6 my-2">
         <!-- product card -->
         <div class="h-[400px]">
           <div class="h-1/2 flex items-center content-center justify-center">
@@ -535,6 +552,65 @@
         </div>
       </div>
     </div>
+
+    <!-- footer  -->
+    <footer class="border-t-2 border-gray-200 rounded">
+      <div
+        class="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center"
+      >
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-lg font-semibold">Subscribe to our newsletter</h2>
+          <p class="mt-2">Receive updates and exclusive offers</p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="px-4 py-2 bg-blue-50 rounded-md outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+          >
+            Subscribe
+          </button>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <ul class="flex gap-4">
+            <li>
+              <a href="#" class="hover:text-blue-500 transition duration-300"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-blue-500 transition duration-300"
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-blue-500 transition duration-300"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-blue-500 transition duration-300"
+                >Terms & Conditions</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-blue-50 text-gray-500 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+          <p>&copy; 2024 Your Trendify Company. All rights reserved.</p>
+          <div class="">
+            <img
+              src="https://opencart.smartaddons.com/themes/so_bestshop/layout3/image/catalog/demo/payment/payment.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="/main.js"></script>
     <!-- toggle button jquery -->
