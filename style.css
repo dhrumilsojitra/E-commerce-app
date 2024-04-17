@@ -1,0 +1,9 @@
+.products{
+    position: static !important;
+    transition: none !important;
+    /* transform: none !important; */
+    height: auto!important;
+}
+.product-lists{
+    position: static !important;
+}

@@ -25,12 +25,13 @@
     />
     <!-- tailwind css -->
     <link rel="stylesheet" href="./src/index.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <title>E-commerce app</title>
   </head>
   <body>
     <header
-      class="sm:h-[12vh] sm:flex-row flex items-center content-center justify-between container mx-auto p-4"
+      class="sm:h-[12vh] sm:flex-row flex items-center content-center justify-between container mx-auto p-4 sticky top-0 z-50 bg-white w-full shadow-lg rounded-lg"
     >
       <!-- logo -->
       <div>
@@ -46,7 +47,6 @@
         <input
           type="text"
           name="search"
-          id="search"
           placeholder="Search For Products and more"
           class="focus:outline-0 text-base bg-blue-50 w-full border-0"
         />
@@ -63,7 +63,15 @@
               class="bg-blue-500 text-white rounded px-3 py-1"
               href="./Admin-panel/admin.html"
             >
-              <i class="fa-solid fa-cart-shopping pe-3"></i>admin
+              admin
+            </a>
+          </li>
+          <li>
+            <a
+              class="bg-blue-500 text-white rounded px-3 py-1"
+              href="./cart.html"
+            >
+              <i class="fa-solid fa-cart-shopping pe-3"></i>cart
             </a>
           </li>
         </ul>
@@ -80,7 +88,6 @@
         <input
           type="text"
           name="search"
-          id="search"
           placeholder="Search For Products and more"
           class="outline-0 text-base bg-blue-50 w-full border-0"
         />
@@ -257,305 +264,318 @@
         class="flex border-t-2 border-b-2 py-6 border-gray-300 justify-center"
       >
         <!-- mobile screen -->
-        <select name="Category" id="" class="px-3 rounded-md block sm:hidden">
-          <option value="" class="hover:text-blue-700">
-            <a href="#">All</a>
-          </option>
-          <option value=""><a href="#">Electronics</a></option>
-          <option value=""><a href="#">Furniture & Decors</a></option>
-          <option value=""><a href="">Jewellry & Accessories</a></option>
-          <option value=""><a href="#">Men & Women</a></option>
-          <option value="" class="hover:text-blue-700">
-            <a href="#">Watches</a>
-          </option>
-        </select>
+        <select
+          name="Category"
+          id="catmenuM"
+          class="px-3 rounded-md block sm:hidden"
+        ></select>
         <!-- large scrren  -->
-        <ul class="hidden gap-7 font-semibold sm:flex">
-          <li class="hover:text-blue-700"><a href="#">All</a></li>
-          <li class="hover:text-blue-700"><a href="#">Electronics</a></li>
-          <li class="hover:text-blue-700">
-            <a href="#">Furniture & Decors</a>
+        <ul
+          class="hidden gap-3 font-semibold sm:flex product-filters"
+          id="catmenuL"
+        >
+          <li
+            class="active hover:bg-blue-700 hover:text-white rounded px-4 hover:cursor-pointer"
+            data-filter="*"
+          >
+            All
+            </li>
+          <!-- <li
+            class="hover:bg-blue-700 hover:text-white rounded px-4 hover:cursor-pointer"
+            data-filter=".strawberry"
+          >
+            Strawberry
           </li>
-          <li class="hover:text-blue-700">
-            <a href="">Jewellry & Accessories</a>
+          <li
+            class="hover:bg-blue-700 hover:text-white rounded px-4 hover:cursor-pointer"
+            data-filter=".berry"
+          >
+            Berry
           </li>
-          <li class="hover:text-blue-700"><a href="#">Men & Women</a></li>
-          <li class="hover:text-blue-700"><a href="#">Watches</a></li>
+          <li
+            class="hover:bg-blue-700 hover:text-white rounded px-4 hover:cursor-pointer"
+            data-filter=".lemon"
+          >
+            Lemon
+          </li>  -->
+          </li>
         </ul>
       </div>
       <!-- products -->
-      <div class="grid md:grid-cols-3 lg:grid-cols-6 my-2">
-        <!-- product card -->
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/i/e/f/-original-imagymhw8g7tdyhk.jpeg?q=70&crop=false"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
-
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
+      <div>
+        <div class="grid md:grid-cols-3 lg:grid-cols-6 product-lists" id="pd">
+          <!-- product card -->
+          <!-- <div class="h-[400px] men products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img  
+                src="https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/i/e/f/-original-imagymhw8g7tdyhk.jpeg?q=70&crop=false"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
             <div
-              class="flex border-[1px] rounded-md items-center content-center"
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
             >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/612/612/xif0q/cycle/k/t/b/-original-imagrzvjjvvxvwa2.jpeg?q=70"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
 
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
+              >
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="h-[400px] berry products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img
+                src="https://rukminim2.flixcart.com/image/612/612/xif0q/cycle/k/t/b/-original-imagrzvjjvvxvwa2.jpeg?q=70"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
             <div
-              class="flex border-[1px] rounded-md items-center content-center"
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
             >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/j/z/3/-original-imagtc5fqyz8tu4c.jpeg?q=70"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
 
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
+              >
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="h-[400px] men products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img
+                src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/j/z/3/-original-imagtc5fqyz8tu4c.jpeg?q=70"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
             <div
-              class="flex border-[1px] rounded-md items-center content-center"
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
             >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/612/612/xif0q/bed/y/1/i/-original-imagtjkkhzzfgvae.jpeg?q=70"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
 
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
+              >
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="h-[400px] strawberry products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img
+                src="https://rukminim2.flixcart.com/image/612/612/xif0q/bed/y/1/i/-original-imagtjkkhzzfgvae.jpeg?q=70"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
             <div
-              class="flex border-[1px] rounded-md items-center content-center"
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
             >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/832/832/xif0q/watch/d/h/f/gold625-626-gold-bracelet-gold-dd-casado-men-original-imagzbzdrdx8wk4t.jpeg?q=70&crop=false"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
 
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
+              >
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="h-[400px] lemon products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img
+                src="https://rukminim2.flixcart.com/image/832/832/xif0q/watch/d/h/f/gold625-626-gold-bracelet-gold-dd-casado-men-original-imagzbzdrdx8wk4t.jpeg?q=70&crop=false"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
             <div
-              class="flex border-[1px] rounded-md items-center content-center"
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
             >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-[400px]">
-          <div class="h-1/2 flex items-center content-center justify-center">
-            <img
-              src="https://rukminim2.flixcart.com/image/832/832/xif0q/sari/e/r/l/free-2555s283t-mitera-unstitched-original-imagrezpcst976hr.jpeg?q=70&crop=false"
-              alt=""
-              srcset=""
-              class="h-full p-2"
-            />
-          </div>
-          <div
-            class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
-          >
-            <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
 
-            <p class="text-gray-500 text-xs">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </p>
-            <p class="text-blue-700 text-lg font-bold">$700</p>
-            <div
-              class="flex border-[1px] rounded-md items-center content-center"
-            >
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
               >
-                +
-              </button>
-              <p class="px-4">1</p>
-              <button
-                class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                -
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
-              >
-                Add To Cart
-              </button>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
             </div>
           </div>
+          <div class="h-[400px] lemon products">
+            <div class="h-1/2 flex items-center content-center justify-center">
+              <img
+                src="https://rukminim2.flixcart.com/image/832/832/xif0q/sari/e/r/l/free-2555s283t-mitera-unstitched-original-imagrezpcst976hr.jpeg?q=70&crop=false"
+                alt=""
+                srcset=""
+                class="h-full p-2"
+              />
+            </div>
+            <div
+              class="h-1/2 flex flex-col items-center content-center justify-center gap-2"
+            >
+              <p class="text-gray-700 text-xl font-semibold">Cemera</p>
+
+              <p class="text-gray-500 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </p>
+              <p class="text-blue-700 text-lg font-bold">$700</p>
+              <div
+                class="flex border-[1px] rounded-md items-center content-center"
+              >
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  +
+                </button>
+                <p class="px-4">1</p>
+                <button
+                  class="py-1 px-3 border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  -
+                </button>
+              </div>
+              <div>
+                <button
+                  class="w-full py-1 px-5 rounded-full border-[1px] border-gray-500 text-black hover:bg-blue-500 hover:border-blue-500 hover:text-white"
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
 
     <!-- footer  -->
     <footer class="border-t-2 border-gray-200 rounded">
-      <div
+      <!-- <div
         class="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center"
       >
         <div class="mb-4 md:mb-0">
@@ -598,7 +618,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <div class="bg-blue-50 text-gray-500 py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
           <p>&copy; 2024 Your Trendify Company. All rights reserved.</p>
@@ -612,7 +632,7 @@
       </div>
     </footer>
 
-    <script type="module" src="/main.js"></script>
+    <script src="./isotope.pkgd.min.js"></script>
     <!-- toggle button jquery -->
     <script>
       $(document).ready(function () {
@@ -624,5 +644,6 @@
     </script>
     <!-- flowbite code script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
